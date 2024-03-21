@@ -1,11 +1,12 @@
 locals {
-  in_ports = [80, 443, 22, 8080, 8881]
+  in_ports = [80, 443, 22, 8080, 8881, 5000]
 }
 
 resource "aws_instance" "webserver" {
-  count         = 3
+  count         = 1
   ami           = "ami-080e1f13689e07408"
   instance_type = var.ins_type
+  key_name = "liel-key"
   lifecycle {
     create_before_destroy = true
   }
